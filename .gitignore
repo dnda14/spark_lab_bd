@@ -1,0 +1,26 @@
+# Entornos virtuales
+venv/
+env/
+.env
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Credenciales y llaves SSH (¡MUY IMPORTANTE NO SUBIR ESTO!)
+*.pem
+credenciales.txt
+aws_exports.sh
+
+# Archivos generados dinámicamente por tus scripts
+emr_cluster_info.json
+emr_nodes_ips.json
+
+# Logs y salidas
+*.log
+*.out
+
+# Metadatos de Sistema Operativo
+.DS_Store
+Thumbs.db
