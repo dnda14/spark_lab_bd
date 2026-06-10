@@ -12,7 +12,7 @@ import sys
 # CONFIGURACIÓN
 # ============================================================
 REGION = 'us-east-1'
-CLUSTER_NAME = 'cluster-bigdata-hive'
+CLUSTER_NAME = 'cluster-bigdata-spark'
 EMR_RELEASE = 'emr-7.2.0'           
 KEY_NAME = 'vockey'                   
 
