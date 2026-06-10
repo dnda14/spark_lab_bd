@@ -1,6 +1,6 @@
 # Apache Spark en AWS EMR
 
-El objetivo principal del proyecto es realizar la implementacion y un analisis de rendimiento de WordCount e Inverted Index en Spark..
+El objetivo principal del proyecto es realizar la implementacion y un analisis de rendimiento de WordCount e Indice Invertido en Spark.
 
 ##  Tecnologías Utilizadas
 
