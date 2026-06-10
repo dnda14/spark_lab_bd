@@ -1,4 +1,5 @@
 import sys
+import re
 from pyspark.sql import SparkSession
 
 def main():
@@ -18,9 +19,9 @@ def main():
 
     lineas = spark.sparkContext.textFile(ruta_entrada)
 
-    palabras = lineas.flatMap(lambda linea: linea.split(" "))
+    pals = lineas.flatMap(lambda linea: re.findall(r'[a-zA-Z0-9]+', linea.lower()))
     
-    pares = palabras.map(lambda palabra: (palabra, 1))
+    pares = pals.map(lambda palabra: (palabra, 1))
     
     conteos = pares.reduceByKey(lambda a, b: a + b)
 

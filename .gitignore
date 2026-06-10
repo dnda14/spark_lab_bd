@@ -24,3 +24,8 @@ emr_nodes_ips.json
 # Metadatos de Sistema Operativo
 .DS_Store
 Thumbs.db
+
+preparar_csv_50.py
+justificacion_spark_vs_hive.md
+spark_indice.py
+spark_wordcount.py

@@ -38,8 +38,9 @@ def main():
             mb_sec = "N/A"
             timeline = step['Status']['Timeline']
             
-            if state in ['COMPLETED', 'FAILED'] and 'CreationDateTime' in timeline and 'EndDateTime' in timeline:
-                start = timeline['CreationDateTime']
+            if state in ['COMPLETED', 'FAILED'] and 'EndDateTime' in timeline:
+                # Usamos StartDateTime para no contar el tiempo que estuvo en la cola esperando
+                start = timeline.get('StartDateTime', timeline.get('CreationDateTime'))
                 end = timeline['EndDateTime']
                 
                 duracion = end - start
