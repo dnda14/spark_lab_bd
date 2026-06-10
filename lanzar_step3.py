@@ -17,19 +17,19 @@ def enviar_step():
     ds3_cliente = boto3.client('s3', region_name=region)
     emr_cliente = boto3.client('emr', region_name=region)
 
-    script_local = 'spark_wordcount_df.py'
-    script_s3_key = 'scripts/spark_wordcount_df.py'
+    script_local = 'spark_taxi_queries.py'
+    script_s3_key = f'scripts/{script_local}'
     
     print(f"Subiendo {script_local} a s3://{bucket}/{script_s3_key}...")
     ds3_cliente.upload_file(script_local, bucket, script_s3_key)
     print("✅ Script subido correctamente.")
 
+    ruta_entrada = f"s3://{bucket}/datos_taxi/" 
     
-    ruta_entrada = f"s3://{bucket}/input_escala/crudos_25/*/*" 
-    ruta_salida = f"s3://{bucket}/output/spark_wordcount_25/"
+    ruta_salida = f"s3://{bucket}/output/taxi_queries/particion"
 
     step_config = {
-        'Name': 'spark_wordCount',
+        'Name': 'spark_taxi_queries',
         'ActionOnFailure': 'CONTINUE',
         'HadoopJarStep': {
             'Jar': 'command-runner.jar',
@@ -51,6 +51,7 @@ def enviar_step():
     
     step_id = response['StepIds'][0]
     print(f"✅ Step enviado exitosamente. Step ID: {step_id}")
+    print(f"Los resultados se guardarán en: {ruta_salida}")
 
 if __name__ == '__main__':
     enviar_step()
